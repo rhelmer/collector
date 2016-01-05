@@ -9,5 +9,7 @@ Mac:
 
 Now build Collector:
 ```
+  export PORT=8888
   cargo build --release
+  ./target/release/collector
 ```

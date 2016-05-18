@@ -69,7 +69,7 @@ fn server(mut req: Request, mut res: Response) {
         },
         hyper::Get => {
             let mut res = res.start().unwrap();
-            res.write_all("symbolapi, see github.com/rhelmer/collector".as_bytes()).unwrap();
+            res.write_all("collector, see github.com/rhelmer/collector".as_bytes()).unwrap();
         },
         _ => { *res.status_mut() = StatusCode::MethodNotAllowed },
     }
@@ -87,7 +87,7 @@ fn store_message(message: String) -> Uuid {
         kafka_server: format!("localhost:9092"),
         kafka_topic: format!("collector-test-topic"),
         kafka_timeout: 1000, // ms
-        kafka_required_acks: 0, // do not wait for ack
+        kafka_required_acks: 1, // do not wait for ack
     };
 
     let uuid = Uuid::new_v4();
